@@ -1,6 +1,9 @@
 
 import React, { useState } from 'react';
+import { TodoList } from './TodoList';
 import {TodoListItem} from './TodoListItem';
+import {AddTodoForm} from './AddTodoForm';
+import styles from './styles/Main.module.css';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -23,7 +26,7 @@ function App() {
   
   const [todos, setTodos] = useState(initialTodos);
 
-  const toggleTodo = (selectedTodo:Todo)=>{
+  const toggleTodo: ToggleTodo = (selectedTodo:Todo)=>{
     const newTodos = todos.map((todo)=>{
       if(todo === selectedTodo){
         return {
@@ -34,13 +37,20 @@ function App() {
       return todo;
     });
     setTodos(newTodos);
+  };
+
+  const addTodo:AddTodo = (text:string)=>{
+    const newTodo = {text, complete:false};
+    setTodos([...todos, newTodo]);
   }
-  
+
   return (
-    <ul>
-      <TodoListItem todo={todos[0]} toggleTodo={toggleTodo}/>
-      <TodoListItem todo={todos[1]} toggleTodo={toggleTodo}/>
-    </ul>
+    <div className={styles.root}>
+      <div className={styles.todoListframe}>
+        <AddTodoForm addTodo={addTodo}/>
+        <TodoList todos={todos} toggleTodo={toggleTodo}/>
+      </div>
+    </div>
   );
 }
 
