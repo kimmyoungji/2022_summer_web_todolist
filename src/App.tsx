@@ -46,10 +46,13 @@ function App() {
 
   return (
     <div className={styles.root}>
-      <div className={styles.todoListframe}>
+      <h2 className={styles.title}>Todo List</h2>
+      <div className={styles.addTodoFrame}>
         <AddTodoForm addTodo={addTodo}/>
-        <TodoList todos={todos} toggleTodo={toggleTodo}/>
       </div>
+      <div className={styles.todolistFrame}>
+          <TodoList todos={todos} toggleTodo={toggleTodo}/>
+      </div>  
     </div>
   );
 }

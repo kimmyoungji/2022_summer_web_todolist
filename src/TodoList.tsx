@@ -1,5 +1,6 @@
 import React from 'react';
 import {TodoListItem} from './TodoListItem';
+import styles from './styles/TodoList.module.css';
 
 interface Props{
     todos: Todo[];
@@ -8,10 +9,12 @@ interface Props{
 
 export const TodoList: React.FC<Props> = ({todos, toggleTodo})=>{
     return(
-        <ul>
-            {todos.map((todo)=>(
-                <TodoListItem todo={todo} toggleTodo={toggleTodo}/>
-            ))}
-        </ul>
+        <div className={styles.root}>
+            <ul className={styles.todoList}>
+                {todos.map((todo)=>(
+                    <TodoListItem todo={todo} toggleTodo={toggleTodo}/>
+                ))}
+            </ul>
+        </div>
     );
 };

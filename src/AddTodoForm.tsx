@@ -8,6 +8,7 @@ interface Props{
 
 export const AddTodoForm: React.FC<Props>=({addTodo})=>{
     const [text, setText] = useState('');
+
     return (
         <form className={styles.AddTodoFormFrame}>
             <input
@@ -18,7 +19,6 @@ export const AddTodoForm: React.FC<Props>=({addTodo})=>{
                     setText(e.target.value);
                 }}
             />
-
             <button
                 className={styles.addBtn} 
                 type="submit" 
